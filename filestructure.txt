@@ -1,0 +1,33 @@
+|-- .gitignore
+|-- eslint.config.js
+|-- index.html
+|-- package-lock.json
+|-- package.json
+|-- public
+    |-- favicon.svg
+    |-- icons.svg
+|-- README.md
+|-- src
+    |-- App.jsx
+    |-- assets
+        |-- hero.png
+        |-- react.svg
+        |-- video
+            |-- Sunrise.webm
+        |-- vite.svg
+    |-- components
+        |-- common
+            |-- Footer.jsx
+            |-- Header.jsx
+        |-- Hero
+            |-- HeroSection.jsx
+        |-- layout
+            |-- MainLayout.jsx
+    |-- index.css
+    |-- main.jsx
+    |-- pages
+        |-- about
+            |-- About.jsx
+        |-- home
+            |-- Home.jsx
+|-- vite.config.js

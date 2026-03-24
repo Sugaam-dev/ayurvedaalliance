@@ -1,16 +1,12 @@
-import React from 'react'
+import React from "react";
+import HeroSection from "../../components/Hero/HeroSection";
 
-function Home() {
+const Home = () => {
   return (
     <>
-    <div className='bg-blue-400 h-screen'>
-      
-    </div>
-    <div className='bg-blue-600 h-screen'>
-      
-    </div>
+      <HeroSection />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
