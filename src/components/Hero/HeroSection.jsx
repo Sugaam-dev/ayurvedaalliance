@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import heroVideo from "../../assets/video/sunrise.webm";
 
 const solutions = [
@@ -17,17 +17,40 @@ const solutions = [
 ];
 
 const HeroSection = () => {
-  const scrollRef = useRef();
+  const scrollRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(0);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+
+    if (!container) return;
+
+    const updateScroll = () => {
+      setScrollPosition(container.scrollLeft);
+      setMaxScroll(container.scrollWidth - container.clientWidth);
+    };
+
+    updateScroll();
+    container.addEventListener("scroll", updateScroll);
+
+    return () => {
+      container.removeEventListener("scroll", updateScroll);
+    };
+  }, []);
 
   const scroll = (dir) => {
-    scrollRef.current.scrollBy({
-      left: dir === "left" ? -300 : 300,
+    const container = scrollRef.current;
+    const scrollAmount = 300;
+
+    container.scrollBy({
+      left: dir === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
   };
 
   return (
-    <section className="relative w-full h-[calc(100vh-80px)] overflow-hidden text-white">
+    <section className="relative w-full min-h-screen pt-[110px] overflow-hidden text-white">
 
       {/* VIDEO */}
       <video
@@ -41,14 +64,14 @@ const HeroSection = () => {
       </video>
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/80 z-10" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0a4d68]/60 via-black/40 to-black/85" />
 
       {/* CONTENT */}
-      <div className="relative z-20 h-full flex flex-col justify-center container mx-auto px-6">
+      <div className="relative z-20 flex flex-col justify-start pt-20 md:pt-24 max-w-[1100px] mx-auto px-4 md:px-8">
 
         {/* TEXT */}
-        <div className="max-w-xl mb-6">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+        <div className="max-w-xl mb-10">
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             Making Life a Celebration
           </h1>
 
@@ -64,46 +87,57 @@ const HeroSection = () => {
         </h3>
 
         {/* ICON ROW */}
-        <div className="relative flex items-center">
+        <div className="relative flex items-center w-full mt-4">
 
-          {/* LEFT */}
-          <button
-            onClick={() => scroll("left")}
-            className="hidden md:flex absolute left-0 z-30 
-            w-12 h-12 items-center justify-center rounded-full 
-            border border-white/40 bg-black/40 backdrop-blur-md"
-          >
-            ‹
-          </button>
+          {/* LEFT BUTTON */}
+          {scrollPosition > 5 && (
+            <button
+              onClick={() => scroll("left")}
+              className="absolute left-0 z-30 w-9 h-9 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-white/70 bg-black/70 backdrop-blur-md"
+            >
+              ‹
+            </button>
+          )}
 
-          {/* SCROLLER */}
-          <div
-            ref={scrollRef}
-            className="flex gap-10 overflow-x-auto no-scrollbar"
-          >
-            {solutions.map((item, i) => (
-              <div key={i} className="flex flex-col items-center min-w-[110px]">
+          {/* SCROLLER WRAPPER */}
+          <div className="w-full overflow-hidden">
 
-                <div className="w-[90px] h-[90px] rounded-full bg-white/50 flex items-center justify-center backdrop-blur-md">
-                  <img src={item.icon} alt={item.name} className="w-8" />
+            {/* SCROLLER */}
+            <div
+              ref={scrollRef}
+              className="flex gap-5 w-full overflow-x-auto md:overflow-hidden no-scrollbar scroll-smooth px-4 md:px-8 snap-x snap-mandatory"
+            >
+              {solutions.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col items-center min-w-[85px] md:min-w-[95px] snap-start"
+                >
+                  <div className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-black/60 flex items-center justify-center backdrop-blur-md">
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="w-8 filter brightness-0 invert"
+                    />
+                  </div>
+
+                  <p className="mt-3 text-sm text-gray-200 text-center">
+                    {item.name}
+                  </p>
                 </div>
+              ))}
+            </div>
 
-                <p className="mt-3 text-sm text-white-300">
-                  {item.name}
-                </p>
-              </div>
-            ))}
           </div>
 
-          {/* RIGHT */}
-          <button
-            onClick={() => scroll("right")}
-            className="hidden md:flex absolute right-0 z-30 
-            w-12 h-12 items-center justify-center rounded-full 
-            border border-white/40 bg-black/40 backdrop-blur-md"
-          >
-            ›
-          </button>
+          {/* RIGHT BUTTON */}
+          {scrollPosition < maxScroll - 5 && (
+            <button
+              onClick={() => scroll("right")}
+              className="absolute right-0 z-30 w-9 h-9 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-white/70 bg-black/70 backdrop-blur-md"
+            >
+              ›
+            </button>
+          )}
         </div>
 
         {/* STATS */}
@@ -112,7 +146,7 @@ const HeroSection = () => {
             A global movement...
           </h2>
 
-          <ul className="flex gap-8 text-sm md:text-base">
+          <ul className="flex gap-6 text-sm md:text-base flex-wrap">
             <li className="flex items-center gap-2">
               <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
               45 years legacy
