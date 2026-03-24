@@ -30,4 +30,14 @@
             |-- About.jsx
         |-- home
             |-- Home.jsx
+            |-- images
+                |-- mind.jpg
+                |-- mind1.jpg
+                |-- mind2.jpg
+                |-- mindful.jpg
+                |-- mindfulness.jpg
+                |-- OIP.jpg
+            |-- MediaCarousel.jsx
+            |-- MeditationPrograms.jsx
+            |-- Testimonials.jsx
 |-- vite.config.js

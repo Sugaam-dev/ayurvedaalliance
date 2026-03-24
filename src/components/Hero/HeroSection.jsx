@@ -50,8 +50,8 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen pt-[110px] overflow-hidden text-white">
-
+    // <section className="relative w-full min-h-screen pt-[110px] overflow-hidden text-white">
+<section className="relative w-full min-h-screen pt-[160px] lg:pt-[180px] overflow-hidden text-white">
       {/* VIDEO */}
       <video
         autoPlay
@@ -142,20 +142,20 @@ const HeroSection = () => {
 
         {/* STATS */}
         <div className="mt-10">
-          <h2 className="text-xl font-semibold mb-3">
+          <h2 className="text-xl font-semibold mb-7">
             A global movement...
           </h2>
 
           <ul className="flex gap-6 text-sm md:text-base flex-wrap">
-            <li className="flex items-center gap-2">
+            <li className="flex items-center gap-2  mb-5">
               <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
               45 years legacy
             </li>
-            <li className="flex items-center gap-2">
+            <li className="flex items-center gap-2  mb-5">
               <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
               10,000+ centres in 182 countries
             </li>
-            <li className="flex items-center gap-2">
+            <li className="flex items-center gap-2  mb-5">
               <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
               80 crore+ lives touched
             </li>
