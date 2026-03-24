@@ -29,6 +29,9 @@
         |-- about
             |-- About.jsx
         |-- home
+            |-- ExperienceSection.jsx
+            |-- FAQSection.jsx
+            |-- GurudevSection.jsx
             |-- Home.jsx
             |-- images
                 |-- mind.jpg
@@ -37,13 +40,18 @@
                 |-- mindful.jpg
                 |-- mindfulness.jpg
                 |-- OIP.jpg
+                |-- senior_living_social_media.jpg
+                |-- sriravishankar.jpg
                 |-- te.jpg
                 |-- teac.jpg
                 |-- teach.jpeg
                 |-- teachers.jpg
                 |-- Yoga.jpg
+            |-- LivingSocialImpact.jsx
             |-- MediaCarousel.jsx
             |-- MeditationPrograms.jsx
             |-- SudarshanKriya.jsx
+            |-- TeachersSection.jsx
             |-- TestimonialCarousel.jsx
+            |-- WisdomSection.jsx
 |-- vite.config.js
