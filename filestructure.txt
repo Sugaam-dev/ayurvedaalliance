@@ -37,7 +37,13 @@
                 |-- mindful.jpg
                 |-- mindfulness.jpg
                 |-- OIP.jpg
+                |-- te.jpg
+                |-- teac.jpg
+                |-- teach.jpeg
+                |-- teachers.jpg
+                |-- Yoga.jpg
             |-- MediaCarousel.jsx
             |-- MeditationPrograms.jsx
-            |-- Testimonials.jsx
+            |-- SudarshanKriya.jsx
+            |-- TestimonialCarousel.jsx
 |-- vite.config.js
