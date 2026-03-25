@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import heroVideo from "../../assets/video/sunrise.webm";
+import heroVideo from "../../assets/video/Sunrise.webm";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const solutions = [
