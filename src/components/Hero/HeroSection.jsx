@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import heroVideo from "../../assets/video/sunrise.webm";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const solutions = [
   { name: "Stress", icon: "https://www.artofliving.org/in-en/app/plugins/elementor_artofliving/widgets/circle_icons/stress.svg" },
@@ -92,11 +93,11 @@ const HeroSection = () => {
           {/* LEFT BUTTON */}
           {scrollPosition > 5 && (
             <button
-              onClick={() => scroll("left")}
-              className="absolute left-0 z-30 w-9 h-9 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-white/70 bg-black/70 backdrop-blur-md"
-            >
-              ‹
-            </button>
+  onClick={() => scroll("left")}
+  className="absolute left-0 z-30 w-10 h-10 flex items-center justify-center rounded-full border border-white/40 bg-white/10 backdrop-blur-md hover:bg-white/20 transition"
+>
+  <ChevronLeft className="w-5 h-5 text-white" />
+</button>
           )}
 
           {/* SCROLLER WRAPPER */}
@@ -132,11 +133,11 @@ const HeroSection = () => {
           {/* RIGHT BUTTON */}
           {scrollPosition < maxScroll - 5 && (
             <button
-              onClick={() => scroll("right")}
-              className="absolute right-0 z-30 w-9 h-9 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-white/70 bg-black/70 backdrop-blur-md"
-            >
-              ›
-            </button>
+  onClick={() => scroll("right")}
+  className="absolute right-0 z-30 w-10 h-10 flex items-center justify-center rounded-full border border-white/40 bg-white/10 backdrop-blur-md hover:bg-white/20 transition"
+>
+  <ChevronRight className="w-5 h-5 text-white" />
+</button>
           )}
         </div>
 

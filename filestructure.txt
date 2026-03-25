@@ -29,6 +29,10 @@
         |-- about
             |-- About.jsx
         |-- home
+            |-- data
+                |-- meditationData.js
+                |-- wisdomData.js
+                |-- yogaData.js
             |-- ExperienceSection.jsx
             |-- FAQSection.jsx
             |-- GurudevSection.jsx
@@ -50,6 +54,7 @@
             |-- LivingSocialImpact.jsx
             |-- MediaCarousel.jsx
             |-- MeditationPrograms.jsx
+            |-- ProgramSection.jsx
             |-- SudarshanKriya.jsx
             |-- TeachersSection.jsx
             |-- TestimonialCarousel.jsx

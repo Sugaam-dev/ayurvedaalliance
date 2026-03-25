@@ -1,6 +1,5 @@
 import React from "react";
 import HeroSection from "../../components/Hero/HeroSection";
-import MeditationPrograms from "./MeditationPrograms";
 import MediaCarousel from "./MediaCarousel";
 import SudarshanKriya from "./SudarshanKriya";
 import TestimonialCarousel from "./TestimonialCarousel";
@@ -9,22 +8,26 @@ import FAQSection from "./FAQSection";
 import ExperienceSection from "./ExperienceSection";
 import LivingSocialImpact from "./LivingSocialImpact";
 import TeachersSection from "./TeachersSection";
-import WisdomSection from "./WisdomSection";
+import  meditationData  from "./data/meditationData";
+import  yogaData  from "./data/yogaData";
+import  wisdomData  from "./data/wisdomData";
+import ProgramSection from "./ProgramSection";
 
 const Home = () => {
   return (
     <>
       <HeroSection />
-      <MeditationPrograms />
-      <MediaCarousel />
+        <ProgramSection data={meditationData} />
+        <MediaCarousel />
+      <ProgramSection data={yogaData} />    
       <SudarshanKriya />
       <TestimonialCarousel />
-      <GurudevSection />
+      {/* <GurudevSection />
       <FAQSection />
       <ExperienceSection />
       <LivingSocialImpact/>
       <TeachersSection/>
-      <WisdomSection/>
+      <ProgramSection data={wisdomData} /> */}
     </>
   );
 };
