@@ -1,5 +1,5 @@
 import React from "react";
-import bgImg from "./images/sriravishankar.jpg"; // your image
+import bgImg from "./images/yogiranjan.jpeg"; // your image
 
 const GurudevSection = () => {
   return (
@@ -8,7 +8,7 @@ const GurudevSection = () => {
       {/* Background Image */}
       <img
         src={bgImg}
-        alt="Gurudev Sri Sri Ravi Shankar"
+        alt="Gurudev Sri Sri Ranjanji"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
@@ -24,11 +24,11 @@ const GurudevSection = () => {
           </p>
 
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-            Gurudev Sri Sri Ravi Shankar
+            Gurudev Sri Sri Ranjanji
           </h2>
 
           <p className="text-sm md:text-base text-gray-300 leading-relaxed mb-4">
-            Gurudev Sri Sri Ravi Shankar is a global humanitarian, spiritual leader and ambassador of peace. Gurudev’s vision of personal and social transformation through mental health and wellness has ignited a global movement in over 182 countries, uplifting the lives of more than 80 crore+ people.
+            Gurudev Sri Sri Ranjanji is a global humanitarian, spiritual leader and ambassador of peace. Gurudev’s vision of personal and social transformation through mental health and wellness has ignited a global movement in over 182 countries, uplifting the lives of more than 80 crore+ people.
           </p>
 
           <button className="text-orange-400 font-semibold hover:text-orange-300 transition">

@@ -51,6 +51,7 @@
                 |-- teach.jpeg
                 |-- teachers.jpg
                 |-- Yoga.jpg
+                |-- yogiranjan.jpeg
             |-- LivingSocialImpact.jsx
             |-- MediaCarousel.jsx
             |-- MeditationPrograms.jsx
