@@ -22,10 +22,10 @@ const Home = () => {
       <ProgramSection data={yogaData} />    
       <SudarshanKriya />
       <TestimonialCarousel />
-      {/* <GurudevSection />
+      <GurudevSection />
       <FAQSection />
-      <ExperienceSection />
-      <LivingSocialImpact/>
+      {/* <ExperienceSection /> */}
+      {/* <LivingSocialImpact/>
       <TeachersSection/>
       <ProgramSection data={wisdomData} /> */}
     </>
