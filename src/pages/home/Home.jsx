@@ -24,9 +24,9 @@ const Home = () => {
       <TestimonialCarousel />
       <GurudevSection />
       <FAQSection />
-      {/* <ExperienceSection />
+      <ExperienceSection />
       <LivingSocialImpact/>
-      <TeachersSection/>
+      {/* <TeachersSection/>
       <ProgramSection data={wisdomData} /> */}
     </>
   );
