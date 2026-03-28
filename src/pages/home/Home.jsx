@@ -26,8 +26,8 @@ const Home = () => {
       <FAQSection />
       <ExperienceSection />
       <LivingSocialImpact/>
-      {/* <TeachersSection/>
-      <ProgramSection data={wisdomData} /> */}
+      <TeachersSection/>
+      <ProgramSection data={wisdomData} />
     </>
   );
 };
