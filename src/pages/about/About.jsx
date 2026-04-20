@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import OurStory from "./OurStory";
+import OurProgram from "./OurProgram";
+import OurTeam from "./OurTeam";
 
-export default function About() {
+const About = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <OurStory />
+      <OurProgram />
+      <OurTeam />
+    </>
+  );
+};
+
+export default About;

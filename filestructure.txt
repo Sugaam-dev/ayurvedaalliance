@@ -11,6 +11,7 @@
     |-- App.jsx
     |-- assets
         |-- hero.png
+        |-- ourprogram.jpg
         |-- react.svg
         |-- video
             |-- Sunrise.webm
@@ -28,6 +29,30 @@
     |-- pages
         |-- about
             |-- About.jsx
+            |-- images
+                |-- Anulasha.png
+                |-- consul.jpg
+                |-- customer.jpg
+                |-- doctors.jpg
+                |-- driving.jpg
+                |-- dsc.jpg
+                |-- education.jpg
+                |-- herbal.jpg
+                |-- housekeeping.jpg
+                |-- Hrishanth.jpeg
+                |-- jungle-used.jpg
+                |-- kitchen.jpg
+                |-- maintenance.jpg
+                |-- meal.jpg
+                |-- ourstory.jpg
+                |-- RaviSir.jpeg
+                |-- security.jpg
+                |-- spa.jpg
+                |-- white-tara-used.jpg
+                |-- yogainstructors.jpg
+            |-- OurProgram.jsx
+            |-- OurStory.jsx
+            |-- OurTeam.jsx
         |-- home
             |-- data
                 |-- meditationData.js

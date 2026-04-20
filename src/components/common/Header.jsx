@@ -1,258 +1,555 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const location = useLocation();
+const Logo = () => (
+  <div className="flex items-center gap-3 flex-shrink-0">
+    {/* Lotus SVG logo inspired by the Ayurveda aesthetic */}
+    <svg
+      width="44"
+      height="44"
+      viewBox="0 0 44 44"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="22" cy="22" r="21" stroke="#5C6B5E" strokeWidth="1.2" />
+      {/* Leaf */}
+      <path
+        d="M22 8 C18 12, 14 17, 15 22 C16 27, 20 28, 22 26 C24 28, 28 27, 29 22 C30 17, 26 12, 22 8Z"
+        fill="#5C6B5E"
+        opacity="0.85"
+      />
+      <path
+        d="M22 8 L22 26"
+        stroke="#f0ede6"
+        strokeWidth="0.8"
+      />
+      {/* Small petal details */}
+      <path
+        d="M15 22 C17 19, 20 18, 22 20"
+        stroke="#f0ede6"
+        strokeWidth="0.6"
+        fill="none"
+      />
+      <path
+        d="M29 22 C27 19, 24 18, 22 20"
+        stroke="#f0ede6"
+        strokeWidth="0.6"
+        fill="none"
+      />
+    </svg>
 
-  // --- Smart Scroll Logic ---
+    <div className="leading-none">
+      <div
+        className="text-[#3d4a3e] tracking-[0.25em] text-lg font-semibold"
+        style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif", letterSpacing: "0.22em" }}
+      >
+        AYURVEDA
+      </div>
+      <div
+        className="text-[#7a8c7b] tracking-[0.3em] text-[9px] mt-0.5"
+        style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif" }}
+      >
+        AYURVEDA &nbsp;·&nbsp; WELLNESS &nbsp;·&nbsp; RETREAT
+      </div>
+    </div>
+  </div>
+);
+
+const navItems = [
+   {
+    label: "About Sukhavati",
+    children: [
+      { label: "Our Story", link: "about/ourstory" },
+      { label: "Our Program", link: "about/ourprogram" },
+      { label: "Our Team", link: "about/ourteam" },
+      { label: "Our Treatments", link: "/our-treatments" },
+      { label: "Our Villas", link: "/our-villas" },
+      { label: "Other Services", link: "/other-services" },
+    ],
+  },
+ {
+    label: "Your Journey",
+    children: [
+      { label: "Your Stay", link: "/stay" },
+      { label: "Retreat Experience", link: "/retreat" },
+      { label: "Daily Schedule", link: "/schedule" },
+      { label: "Wellness Goals", link: "/goals" },
+      { label: "Pricing", link: "/pricing" },
+    ],
+  },
+  {
+    label: "Your Wellness Goals",
+    children: [
+      { label: "Detox", link: "/detox" },
+      { label: "Stress Relief", link: "/stress" },
+      { label: "Weight Loss", link: "/weight-loss" },
+    ],
+  },
+ {
+    label: "Ayurveda",
+    children: [
+      { label: "What is Ayurveda?", link: "/ayurveda" },
+      { label: "Panchakarma", link: "/panchakarma" },
+      { label: "Benefits", link: "/benefits" },
+    ],
+  },
+  {
+    label: "Contact",
+    link: "/contact",
+    children: [],
+  },
+];
+
+const DropdownMenu = ({ items, isOpen }) => (
+  <div
+    className={`absolute top-full left-1/2 -translate-x-1/2 mt-0 pt-3 z-50 transition-all duration-200 ${
+      isOpen ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none -translate-y-1"
+    }`}
+    style={{ minWidth: "210px" }}
+  >
+    <div className="bg-[#f5f2eb] shadow-lg py-3">
+      {items.map((item) => (
+  <Link
+    key={item.label}
+    to={item.link}
+    className="block px-6 py-2.5 text-[#4a5a4b] hover:text-[#2e3d2f] hover:bg-[#ede8df] transition-colors duration-150 text-sm"
+    style={{
+      fontFamily: "'Cormorant Garamond', 'Georgia', serif",
+      fontSize: "15px",
+      letterSpacing: "0.01em",
+    }}
+  >
+    {item.label}
+  </Link>
+))}
+    </div>
+  </div>
+);
+
+const MobileAccordion = ({ item, isOpen, onToggle }) => (
+  <div className="border-b border-[#d8d2c4]">
+    <button
+      onClick={onToggle}
+      className="flex items-center justify-between w-full px-6 py-4 text-[#3d4a3e] hover:text-[#2e3d2f] transition-colors"
+      style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif", fontSize: "16px", letterSpacing: "0.04em" }}
+    >
+      <span>{item.label}</span>
+      {item.children.length > 0 && (
+        <svg
+          className={`w-4 h-4 text-[#7a8c7b] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      )}
+    </button>
+    {item.children.length > 0 && isOpen && (
+      <div className="bg-[#ede8df] pb-2">
+       {item.children.map((child) => (
+  <Link
+    key={child.label}
+    to={child.link}
+    className="block px-10 py-2.5 text-[#5a6b5b] hover:text-[#2e3d2f] transition-colors"
+    style={{
+      fontFamily: "'Cormorant Garamond', 'Georgia', serif",
+      fontSize: "15px",
+    }}
+    onClick={() => setMobileOpen(false)}
+  >
+    {child.label}
+  </Link>
+))}
+      </div>
+    )}
+  </div>
+);
+
+export default function Header() {
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileAccordion, setMobileAccordion] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+  const timeoutRef = useRef(null);
+
   useEffect(() => {
-    const controlNavbar = () => {
-      if (typeof window !== 'undefined') {
-        // Only trigger hide/show if the mobile menu is NOT open
-        if (!isMobileMenuOpen) {
-          if (window.scrollY > lastScrollY && window.scrollY > 100) {
-            setIsVisible(false); // Hide on scroll down
-          } else {
-            setIsVisible(true);  // Show on scroll up
-          }
-        }
-        setLastScrollY(window.scrollY);
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    window.addEventListener('scroll', controlNavbar);
-    return () => window.removeEventListener('scroll', controlNavbar);
-  }, [lastScrollY, isMobileMenuOpen]);
+  const handleMouseEnter = (label) => {
+    clearTimeout(timeoutRef.current);
+    setActiveMenu(label);
+  };
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
-  }, [isMobileMenuOpen]);
-
-  const isActive = (path) => {
-    if (path === '/') return location.pathname === '/';
-    return location.pathname.startsWith(path);
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setActiveMenu(null), 120);
   };
 
   return (
     <>
-      {/* 1. MAIN HEADER (Desktop & Tablet/Mobile Toggle) */}
-      <header 
-        className={`fixed top-0 left-0 w-full z-[60] font-sans transition-transform duration-500 ease-in-out ${
-          isVisible ? 'translate-y-0' : '-translate-y-full'
-        }`}
-      >
-        {/* Logo Section - Changed 'md' to 'lg' to keep tablet in mobile style */}
-        <div className="flex justify-between items-center px-4 py-3 lg:justify-center relative">
-          <button 
-            className="lg:hidden text-white hover:text-[#ff9933] transition-colors p-2" 
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <Menu size={32} />
-          </button>
+      {/* Google Fonts import */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
 
-          <div className="lg:static absolute left-1/2 -translate-x-1/2 lg:translate-x-0">
-            <Link to="/">
-              <img 
-                src="https://i0.wp.com/www.ayurvedaalliance.org/wp-content/uploads/2025/09/logo-ayurveda-alliance.webp?fit=286%2C269&ssl=1" 
-                alt="Logo" 
-                className="h-14 lg:h-24 w-auto brightness-0 invert" 
-              />
-            </Link>
+        :root {
+          --body-font-family: 'Cormorant Garamond', 'Georgia', serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        header a,
+        header .unlinked {
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          font-family: var(--body-font-family);
+        }
+      `}</style>
+
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 ${
+          scrolled ? "shadow-sm" : ""
+        }`}
+        style={{ backgroundColor: "#f5f2eb" }}
+      >
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="flex items-center justify-between h-[72px] lg:h-[80px]">
+
+            {/* Logo */}
+            <a href="/" className="flex-shrink-0">
+              <Logo />
+            </a>
+
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+              {navItems.map((item) => (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter(item.label)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <a
+                    href="#"
+                    className={`px-3 xl:px-4 py-2 text-sm transition-colors duration-150 whitespace-nowrap block ${
+                      activeMenu === item.label
+                        ? "text-[#2e3d2f]"
+                        : "text-[#4a5a4b] hover:text-[#2e3d2f]"
+                    }`}
+                    style={{
+                      fontFamily: "'Cormorant Garamond', 'Georgia', serif",
+                      fontSize: "17.5px",
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                  {item.children.length > 0 && (
+                    <DropdownMenu items={item.children} isOpen={activeMenu === item.label} />
+                  )}
+                </div>
+              ))}
+            </nav>
+
+            {/* Book Now + Hamburger */}
+            <div className="flex items-center gap-4">
+              <a
+                href="#"
+                className="hidden sm:inline-block border border-[#3d4a3e] text-[#3d4a3e] hover:bg-[#3d4a3e] hover:text-[#f5f2eb] transition-colors duration-200 px-5 py-2 text-xs tracking-[0.18em] font-medium"
+                style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif", letterSpacing: "0.18em", fontSize: "13px" }}
+              >
+                BOOK NOW
+              </a>
+
+              {/* Hamburger (mobile/tablet) */}
+              <button
+                className="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 focus:outline-none"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label="Toggle menu"
+              >
+                <span
+                  className={`block h-px w-6 bg-[#3d4a3e] transition-all duration-300 ${
+                    mobileOpen ? "rotate-45 translate-y-[7px]" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-px w-6 bg-[#3d4a3e] transition-all duration-300 ${
+                    mobileOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-px w-6 bg-[#3d4a3e] transition-all duration-300 ${
+                    mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""
+                  }`}
+                />
+              </button>
+            </div>
           </div>
-          
-          <div className="w-10 lg:hidden"></div>
         </div>
 
-        {/* 2. Desktop Navigation (Visible only on Large Screens) */}
-        <nav className="hidden lg:block bg-[#333a3d]/95 backdrop-blur-sm border-b border-white/5 shadow-2xl">
-          <ul className="flex items-center justify-center space-x-2 text-white text-[13px] font-medium tracking-wider uppercase">
-            <NavItem title="Home" to="/" active={isActive('/')} />
-            
-            <NavItem title="Find a solution for..." hasDropdown active={isActive('/solutions')}>
-              <DropdownItem title="Stress Management" to="/solutions/stress" active={isActive('/solutions/stress')} />
-              <DropdownItem title="Health & Wellness" hasSubmenu active={isActive('/solutions/health')}>
-                <SubmenuItem title="Yoga for Back Pain" to="/solutions/yoga-back" active={isActive('/solutions/yoga-back')} />
-                <SubmenuItem title="Ayurveda Tips" to="/solutions/ayurveda" active={isActive('/solutions/ayurveda')} />
-              </DropdownItem>
-              <DropdownItem title="Anxiety & Depression" to="/solutions/anxiety" active={isActive('/solutions/anxiety')} />
-            </NavItem>
-
-            <NavItem title="Meditation" hasDropdown active={isActive('/meditation')}>
-              <DropdownItem title="Sahaj Samadhi" to="/meditation/sahaj" active={isActive('/meditation/sahaj')} />
-              <DropdownItem title="Mindfulness" to="/meditation/mindfulness" active={isActive('/meditation/mindfulness')} />
-              <DropdownItem title="Guided Meditation" to="/meditation/guided" active={isActive('/meditation/guided')} />
-            </NavItem>
-
-            <NavItem title="Yoga" hasDropdown active={isActive('/yoga')}>
-              <DropdownItem title="Sri Sri Yoga" to="/yoga/sri-sri" active={isActive('/yoga/sri-sri')} />
-              <DropdownItem title="Hatha Yoga" to="/yoga/hatha" active={isActive('/yoga/hatha')} />
-              <DropdownItem title="Power Yoga" to="/yoga/power" active={isActive('/yoga/power')} />
-            </NavItem>
-
-            <NavItem title="Wisdom" hasDropdown active={isActive('/wisdom')}>
-              <DropdownItem title="Knowledge Sheets" to="/wisdom/sheets" active={isActive('/wisdom/sheets')} />
-              <DropdownItem title="Yoga Sutras" to="/wisdom/sutras" active={isActive('/wisdom/sutras')} />
-            </NavItem>
-
-            <NavItem title="Events" to="/events" active={isActive('/events')} />
-            <NavItem title="Social Impact" to="/social-impact" active={isActive('/social-impact')} />
-            <NavItem title="About Us" to="/about" active={isActive('/about')} />
-          </ul>
-        </nav>
+        {/* Mobile Menu Drawer */}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+          style={{ backgroundColor: "#f5f2eb", borderTop: "1px solid #d8d2c4" }}
+        >
+          <div className="pb-4">
+            {navItems.map((item) => (
+              <MobileAccordion
+                key={item.label}
+                item={item}
+                isOpen={mobileAccordion === item.label}
+                onToggle={() =>
+                  setMobileAccordion(
+                    mobileAccordion === item.label ? null : item.label
+                  )
+                }
+              />
+            ))}
+            {/* Book Now for mobile */}
+            <div className="px-6 pt-5 pb-2">
+              <a
+                href="#"
+                className="block text-center border border-[#3d4a3e] text-[#3d4a3e] hover:bg-[#3d4a3e] hover:text-[#f5f2eb] transition-colors duration-200 px-5 py-3 text-xs tracking-[0.18em] font-medium"
+                style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif", letterSpacing: "0.18em", fontSize: "13px" }}
+              >
+                BOOK NOW
+              </a>
+            </div>
+          </div>
+        </div>
       </header>
 
-      {/* 3. Mobile/Tablet Sidebar (Beautiful Drawer) - Moved outside header for reliability */}
-      <div className={`fixed inset-0 z-[100] transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-        
-        <div className={`absolute top-0 left-0 h-full w-[85%] max-w-[380px] bg-[#222729] shadow-2xl transform transition-transform duration-500 ease-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-          <div className="flex justify-between items-center p-6 border-b border-white/10 bg-[#333a3d]">
-            <span className="text-white font-bold tracking-widest text-xs uppercase">Official Menu</span>
-            <button onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-[#ff9933] transition-colors p-2">
-              <X size={28} />
-            </button>
-          </div>
-
-          <ul className="flex flex-col text-white h-[calc(100%-80px)] overflow-y-auto py-4">
-            <MobileNavItem title="Home" to="/" active={isActive('/')} closeMenu={() => setIsMobileMenuOpen(false)} />
-            
-            <MobileNavItem title="Find a solution for..." hasDropdown active={isActive('/solutions')}>
-                <MobileLink to="/solutions/stress" label="Stress Management" active={isActive('/solutions/stress')} closeMenu={() => setIsMobileMenuOpen(false)} />
-                <MobileLink to="/solutions/health" label="Health & Wellness" active={isActive('/solutions/health')} closeMenu={() => setIsMobileMenuOpen(false)} />
-                <MobileLink to="/solutions/anxiety" label="Anxiety & Depression" active={isActive('/solutions/anxiety')} closeMenu={() => setIsMobileMenuOpen(false)} />
-            </MobileNavItem>
-
-            <MobileNavItem title="Meditation" hasDropdown active={isActive('/meditation')}>
-                <MobileLink to="/meditation/sahaj" label="Sahaj Samadhi" active={isActive('/meditation/sahaj')} closeMenu={() => setIsMobileMenuOpen(false)} />
-                <MobileLink to="/meditation/mindfulness" label="Mindfulness" active={isActive('/meditation/mindfulness')} closeMenu={() => setIsMobileMenuOpen(false)} />
-                <MobileLink to="/meditation/guided" label="Guided Meditation" active={isActive('/meditation/guided')} closeMenu={() => setIsMobileMenuOpen(false)} />
-            </MobileNavItem>
-
-            <MobileNavItem title="Yoga" hasDropdown active={isActive('/yoga')}>
-                <MobileLink to="/yoga/sri-sri" label="Sri Sri Yoga" active={isActive('/yoga/sri-sri')} closeMenu={() => setIsMobileMenuOpen(false)} />
-                <MobileLink to="/yoga/hatha" label="Hatha Yoga" active={isActive('/yoga/hatha')} closeMenu={() => setIsMobileMenuOpen(false)} />
-            </MobileNavItem>
-
-            <MobileNavItem title="Events" to="/events" active={isActive('/events')} closeMenu={() => setIsMobileMenuOpen(false)} />
-            <MobileNavItem title="About Us" to="/about" active={isActive('/about')} closeMenu={() => setIsMobileMenuOpen(false)} />
-          </ul>
-        </div>
-      </div>
+      {/* Spacer so content doesn't hide under fixed header */}
+      <div className="h-[72px] lg:h-[80px]" />
     </>
   );
-};
+}
 
-// --- Desktop Components ---
 
-const NavItem = ({ title, to, hasDropdown, active, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <li 
-      className="relative group px-4 py-5" 
-      onMouseEnter={() => setIsOpen(true)} 
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      {hasDropdown ? (
-        <button className={`flex items-center gap-1 transition-colors outline-none cursor-default ${active ? 'text-[#ff9933]' : 'text-white hover:text-[#ff9933]'}`}>
-          {title} <ChevronDown size={14} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-        </button>
-      ) : (
-        <Link to={to} className={`transition-colors ${active ? 'text-[#ff9933]' : 'text-white hover:text-[#ff9933]'}`}>
-          {title}
-        </Link>
-      )}
 
-      {hasDropdown && (
-        <div className={`absolute left-0 top-full w-64 bg-[#333a3d] border-t-2 border-[#ff9933] transition-all duration-300 origin-top shadow-xl ${isOpen ? 'opacity-100 scale-y-100 translate-y-0' : 'opacity-0 scale-y-0 -translate-y-2 pointer-events-none'}`}>
-          <ul className="py-2">{children}</ul>
-        </div>
-      )}
-    </li>
-  );
-};
+// import { useState, useEffect, useRef } from "react";
+// import { Link } from "react-router-dom";
 
-const DropdownItem = ({ title, to, hasSubmenu, active, children }) => {
-  const [isSubOpen, setIsSubOpen] = useState(false);
+// /* ================= LOGO ================= */
+// const Logo = () => (
+//   <div className="flex items-center gap-3 flex-shrink-0">
+//     <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+//       <circle cx="22" cy="22" r="21" stroke="#e6dcc6" strokeWidth="1.2" />
+//       <path
+//         d="M22 8 C18 12, 14 17, 15 22 C16 27, 20 28, 22 26 C24 28, 28 27, 29 22 C30 17, 26 12, 22 8Z"
+//         fill="#e6dcc6"
+//         opacity="0.85"
+//       />
+//     </svg>
 
-  return (
-    <li 
-      className="relative border-b border-white/5 last:border-0" 
-      onMouseEnter={() => setIsSubOpen(true)} 
-      onMouseLeave={() => setIsSubOpen(false)}
-    >
-      {hasSubmenu ? (
-        <div className={`flex justify-between items-center px-5 py-3 text-sm cursor-default transition-colors ${active ? 'text-[#ff9933]' : 'text-white hover:text-[#ff9933]'}`}>
-          <span>{title}</span> <ChevronRight size={14} />
-        </div>
-      ) : (
-        <Link to={to} className={`block px-5 py-3 text-sm transition-colors hover:bg-white/5 ${active ? 'text-[#ff9933]' : 'text-white hover:text-[#ff9933]'}`}>
-          {title}
-        </Link>
-      )}
+//     <div className="leading-none">
+//       <div className="text-[#e6dcc6] tracking-[0.25em] text-lg font-semibold">
+//         AYURVEDA
+//       </div>
+//       <div className="text-[#cfc7b2] tracking-[0.3em] text-[9px] mt-0.5">
+//         AYURVEDA · WELLNESS · RETREAT
+//       </div>
+//     </div>
+//   </div>
+// );
 
-      {hasSubmenu && (
-        <div className={`absolute left-full top-0 w-60 bg-[#444c4f] shadow-2xl ml-[2px] transition-all duration-300 origin-left ${isSubOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 pointer-events-none'}`}>
-          <ul className="py-2">{children}</ul>
-        </div>
-      )}
-    </li>
-  );
-};
+// /* ================= NAV DATA ================= */
+// const navItems = [
+//   {
+//     label: "About Sukhavati",
+//     children: [
+//       { label: "Our Story", link: "/about/ourstory" },
+//       { label: "Our Program", link: "/about/ourprogram" },
+//     ],
+//   },
+//   {
+//     label: "Your Journey",
+//     children: [
+//       { label: "Your Stay", link: "/stay" },
+//       { label: "Retreat Experience", link: "/retreat" },
+//     ],
+//   },
+//   {
+//     label: "Contact",
+//     link: "/contact",
+//     children: [],
+//   },
+// ];
 
-const SubmenuItem = ({ title, to, active }) => (
-  <li>
-    <Link to={to} className={`block px-6 py-2 text-[13px] transition-colors ${active ? 'text-[#ff9933]' : 'text-white/70 hover:text-white'}`}>
-      {title}
-    </Link>
-  </li>
-);
+// /* ================= DROPDOWN ================= */
+// const DropdownMenu = ({ items, isOpen }) => (
+//   <div
+//     className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 transition-all duration-200 ${
+//       isOpen
+//         ? "opacity-100 pointer-events-auto"
+//         : "opacity-0 pointer-events-none"
+//     }`}
+//   >
+//     <div className="bg-[#2f3e34] shadow-lg py-3 min-w-[220px]">
+//       {items.map((item) => (
+//         <Link
+//           key={item.label}
+//           to={item.link}
+//           className="block px-6 py-2 text-[#d6cfb8] hover:bg-[#3f4f42]"
+//         >
+//           {item.label}
+//         </Link>
+//       ))}
+//     </div>
+//   </div>
+// );
 
-// --- Mobile/Tablet Components ---
+// /* ================= MOBILE ================= */
+// const MobileAccordion = ({ item, isOpen, onToggle, closeMenu }) => (
+//   <div className="border-b border-[#5a4a3a]">
+//     <button
+//       onClick={onToggle}
+//       className="flex justify-between w-full px-6 py-4 text-[#e6dcc6]"
+//     >
+//       {item.label}
+//     </button>
 
-const MobileNavItem = ({ title, to, hasDropdown, active, children, closeMenu }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+//     {isOpen && item.children.length > 0 && (
+//       <div className="bg-[#3f4f42]">
+//         {item.children.map((child) => (
+//           <Link
+//             key={child.label}
+//             to={child.link}
+//             onClick={closeMenu}
+//             className="block px-10 py-2 text-[#d6cfb8]"
+//           >
+//             {child.label}
+//           </Link>
+//         ))}
+//       </div>
+//     )}
+//   </div>
+// );
 
-  return (
-    <li className="border-b border-white/5 last:border-0">
-      <div className="flex justify-between items-center">
-        {hasDropdown ? (
-          /* Text clicking also toggles the menu on mobile/tablet */
-          <button onClick={() => setIsExpanded(!isExpanded)} className="flex-grow text-left px-6 py-5 font-medium flex items-center justify-between outline-none">
-            <span className={active || isExpanded ? 'text-[#ff9933]' : 'text-white'}>{title}</span>
-            <ChevronDown size={20} className={`transition-transform duration-500 ${isExpanded ? 'rotate-180 text-[#ff9933]' : 'opacity-40'}`} />
-          </button>
-        ) : (
-          <Link to={to} onClick={closeMenu} className={`flex-grow px-6 py-5 font-medium transition-colors ${active ? 'text-[#ff9933] bg-white/5' : 'text-white hover:bg-white/5'}`}>
-            {title}
-          </Link>
-        )}
-      </div>
+// /* ================= HEADER ================= */
+// export default function Header() {
+//   const [activeMenu, setActiveMenu] = useState(null);
+//   const [mobileOpen, setMobileOpen] = useState(false);
+//   const [mobileAccordion, setMobileAccordion] = useState(null);
+//   const [scrolled, setScrolled] = useState(false);
+//   const timeoutRef = useRef(null);
 
-      {hasDropdown && (
-        <div className={`grid transition-all duration-500 ease-in-out overflow-hidden ${isExpanded ? 'grid-rows-[1fr] opacity-100 py-2' : 'grid-rows-[0fr] opacity-0'}`}>
-          <div className="min-h-0 bg-black/10">
-            {children}
-          </div>
-        </div>
-      )}
-    </li>
-  );
-};
+//   useEffect(() => {
+//     const handleScroll = () => setScrolled(window.scrollY > 10);
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
 
-const MobileLink = ({ to, label, active, closeMenu }) => (
-  <Link 
-    to={to} 
-    onClick={closeMenu} 
-    className={`block pl-10 py-3 text-sm transition-all ${active ? 'text-[#ff9933]' : 'text-white/60 hover:text-white hover:pl-11'}`}
-  >
-    {label}
-  </Link>
-);
+//   const handleEnter = (label) => {
+//     clearTimeout(timeoutRef.current);
+//     setActiveMenu(label);
+//   };
 
-export default Header;
+//   const handleLeave = () => {
+//     timeoutRef.current = setTimeout(() => setActiveMenu(null), 120);
+//   };
+
+//   return (
+//     <>
+//       <header
+//         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+//           scrolled ? "shadow-lg backdrop-blur-md" : ""
+//         }`}
+//         style={{
+//           background: "linear-gradient(to right, #2f3e34, #5a3e2b)",
+//         }}
+//       >
+//         <div className="max-w-7xl mx-auto flex justify-between items-center h-[70px] px-6">
+          
+//           {/* LOGO */}
+//           <Link to="/">
+//             <Logo />
+//           </Link>
+
+//           {/* DESKTOP NAV */}
+//           <nav className="hidden lg:flex gap-6">
+//             {navItems.map((item) => (
+//               <div
+//                 key={item.label}
+//                 className="relative"
+//                 onMouseEnter={() => handleEnter(item.label)}
+//                 onMouseLeave={handleLeave}
+//               >
+//                 {item.link ? (
+//                   <Link
+//                     to={item.link}
+//                     className="text-[#e6dcc6] hover:text-white"
+//                   >
+//                     {item.label}
+//                   </Link>
+//                 ) : (
+//                   <span className="text-[#e6dcc6] cursor-pointer">
+//                     {item.label}
+//                   </span>
+//                 )}
+
+//                 {item.children.length > 0 && (
+//                   <DropdownMenu
+//                     items={item.children}
+//                     isOpen={activeMenu === item.label}
+//                   />
+//                 )}
+//               </div>
+//             ))}
+//           </nav>
+
+//           {/* RIGHT SIDE */}
+//           <div className="flex items-center gap-4">
+//             <button className="hidden sm:block border border-[#e6dcc6] text-[#e6dcc6] px-5 py-2 text-xs tracking-[0.2em] hover:bg-[#e6dcc6] hover:text-[#2f3e34] transition">
+//               BOOK NOW
+//             </button>
+
+//             {/* MOBILE MENU BUTTON */}
+//             <button
+//               className="lg:hidden text-[#e6dcc6]"
+//               onClick={() => setMobileOpen(!mobileOpen)}
+//             >
+//               ☰
+//             </button>
+//           </div>
+//         </div>
+
+//         {/* MOBILE MENU */}
+//         {mobileOpen && (
+//           <div
+//             className="lg:hidden"
+//             style={{
+//               background:
+//                 "linear-gradient(to bottom, #2f3e34, #5a3e2b)",
+//             }}
+//           >
+//             {navItems.map((item) => (
+//               <MobileAccordion
+//                 key={item.label}
+//                 item={item}
+//                 isOpen={mobileAccordion === item.label}
+//                 onToggle={() =>
+//                   setMobileAccordion(
+//                     mobileAccordion === item.label ? null : item.label
+//                   )
+//                 }
+//                 closeMenu={() => setMobileOpen(false)}
+//               />
+//             ))}
+//           </div>
+//         )}
+//       </header>
+
+//       {/* SPACER */}
+//       <div className="h-[70px]" />
+//     </>
+//   );
+// }
