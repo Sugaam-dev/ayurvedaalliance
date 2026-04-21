@@ -10,6 +10,7 @@
 |-- src
     |-- App.jsx
     |-- assets
+        |-- forest.jpg
         |-- hero.png
         |-- ourprogram.jpg
         |-- react.svg
@@ -58,17 +59,26 @@
                 |-- meditationData.js
                 |-- wisdomData.js
                 |-- yogaData.js
+            |-- Experience.jsx
             |-- ExperienceSection.jsx
             |-- FAQSection.jsx
             |-- GurudevSection.jsx
             |-- Home.jsx
             |-- images
+                |-- abcd.jpg
+                |-- bphdr.jpg
+                |-- chair.jpg
+                |-- dsc.jpg
+                |-- dsc0.jpg
+                |-- dsc07.jpg
+                |-- greenhouse.jpg
                 |-- mind.jpg
                 |-- mind1.jpg
                 |-- mind2.jpg
                 |-- mindful.jpg
                 |-- mindfulness.jpg
                 |-- OIP.jpg
+                |-- ourayurvedic.jpg
                 |-- senior_living_social_media.jpg
                 |-- sriravishankar.jpg
                 |-- te.jpg
@@ -77,12 +87,17 @@
                 |-- teachers.jpg
                 |-- Yoga.jpg
                 |-- yogiranjan.jpeg
+            |-- LifeChangePage.jsx
             |-- LivingSocialImpact.jsx
             |-- MediaCarousel.jsx
             |-- MeditationPrograms.jsx
             |-- ProgramSection.jsx
+            |-- RetreatIncludesPage.jsx
+            |-- RetreatPage.jsx
             |-- SudarshanKriya.jsx
             |-- TeachersSection.jsx
             |-- TestimonialCarousel.jsx
+            |-- TestimonialsPage.jsx
+            |-- WellnessSection.jsx
             |-- WisdomSection.jsx
 |-- vite.config.js

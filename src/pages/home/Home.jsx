@@ -12,12 +12,24 @@ import  meditationData  from "./data/meditationData";
 import  yogaData  from "./data/yogaData";
 import  wisdomData  from "./data/wisdomData";
 import ProgramSection from "./ProgramSection";
+import WellnessSection from "./WellnessSection";
+import Experience from "./Experience";
+import TestimonialsPage from "./TestimonialsPage";
+import RetreatPage from "./RetreatPage";
+import RetreatIncludesPage from "./RetreatIncludesPage";
+import LifeChangePage from "./LifeChangePage";
 
 const Home = () => {
   return (
     <>
       <HeroSection />
-        <ProgramSection data={meditationData} />
+      <WellnessSection/>
+      <Experience/>
+      <TestimonialsPage/>
+      <RetreatPage/>
+      <RetreatIncludesPage/>
+      <LifeChangePage/>
+        {/* <ProgramSection data={meditationData} />
         <MediaCarousel />
       <ProgramSection data={yogaData} />    
       <SudarshanKriya />
@@ -27,7 +39,7 @@ const Home = () => {
       <ExperienceSection />
       <LivingSocialImpact/>
       <TeachersSection/>
-      <ProgramSection data={wisdomData} />
+      <ProgramSection data={wisdomData} /> */}
     </>
   );
 };
