@@ -2,13 +2,20 @@ import React from "react";
 import OurStory from "./OurStory";
 import OurProgram from "./OurProgram";
 import OurTeam from "./OurTeam";
+import OtherServices from "./OtherServices";
+import OurTreatments from "./OurTreatments";
+import Stay from "./Stay";
+
 
 const About = () => {
   return (
     <>
-      <OurStory />
+      {/* <OurStory />
       <OurProgram />
-      <OurTeam />
+      <OurTeam /> */}
+      {/* <OtherServices/>
+      <OurTreatments/>
+      <Stay/> */}
     </>
   );
 };

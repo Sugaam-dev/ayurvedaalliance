@@ -31,29 +31,55 @@
         |-- about
             |-- About.jsx
             |-- images
+                |-- abhyanga.jpg
                 |-- Anulasha.png
+                |-- auau.jpg
+                |-- bpstay.jpg
+                |-- chefstay.jpg
                 |-- consul.jpg
                 |-- customer.jpg
+                |-- dg1.jpg
+                |-- dg2.jpg
+                |-- dg3.jpg
+                |-- dg4.jpg
+                |-- dg5.jpg
                 |-- doctors.jpg
                 |-- driving.jpg
+                |-- drone.jpg
                 |-- dsc.jpg
                 |-- education.jpg
                 |-- herbal.jpg
                 |-- housekeeping.jpg
                 |-- Hrishanth.jpeg
                 |-- jungle-used.jpg
+                |-- karna.jpg
                 |-- kitchen.jpg
                 |-- maintenance.jpg
                 |-- meal.jpg
+                |-- meditate12.jpg
+                |-- nasya.jpg
+                |-- navarakizhi.jpg
                 |-- ourstory.jpg
+                |-- patrapotali.jpg
+                |-- pizhichil.jpg
                 |-- RaviSir.jpeg
+                |-- relex.jpg
+                |-- river.jpg
                 |-- security.jpg
+                |-- shala.jpg
+                |-- shirodhara.jpg
                 |-- spa.jpg
+                |-- svedana.jpg
+                |-- takradhara.jpg
+                |-- ubtan.jpg
                 |-- white-tara-used.jpg
                 |-- yogainstructors.jpg
+            |-- OtherServices.jsx
             |-- OurProgram.jsx
             |-- OurStory.jsx
             |-- OurTeam.jsx
+            |-- OurTreatments.jsx
+            |-- Stay.jsx
         |-- home
             |-- data
                 |-- meditationData.js

@@ -57,14 +57,14 @@ const Logo = () => (
 
 const navItems = [
    {
-    label: "About Sukhavati",
+    label: "About Us",
     children: [
       { label: "Our Story", link: "about/ourstory" },
       { label: "Our Program", link: "about/ourprogram" },
       { label: "Our Team", link: "about/ourteam" },
-      { label: "Our Treatments", link: "/our-treatments" },
-      { label: "Our Villas", link: "/our-villas" },
-      { label: "Other Services", link: "/other-services" },
+      { label: "Our Treatments", link: "about/ourtreatments" },
+      { label: "Our Villas", link: "about/stay" },
+      { label: "Other Services", link: "about/otherservices" },
     ],
   },
  {
