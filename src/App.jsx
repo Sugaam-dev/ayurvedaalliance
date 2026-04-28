@@ -18,12 +18,12 @@ function App() {
       <Route path="/" element={<MainLayout/>}>
         <Route index element={<Home/>} /> 
         <Route path='about' element={<About/>} />
-        <Route path="about/ourstory" element={<OurStory />} />
+        {/* <Route path="about/ourstory" element={<OurStory />} />
         <Route path="about/ourprogram" element={<OurProgram />} />
          <Route path="about/ourteam" element={<OurTeam />} />
          <Route path="about/otherservices" element={<OtherServices />} />
          <Route path="about/ourtreatments" element={<OurTreatments />} />
-          <Route path="about/stay" element={<Stay />} />
+          <Route path="about/stay" element={<Stay />} /> */}
            {/* <Route path="about/ourprogram" element={<OurProgram />} /> */}
          {/* <Route path="*" element={<div>Page Not Found</div>} />  */}
       </Route>

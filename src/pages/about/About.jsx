@@ -10,12 +10,12 @@ import Stay from "./Stay";
 const About = () => {
   return (
     <>
-      {/* <OurStory />
+      <OurStory />
       <OurProgram />
-      <OurTeam /> */}
-      {/* <OtherServices/>
+      <OurTeam />
+      <OtherServices/>
       <OurTreatments/>
-      <Stay/> */}
+      <Stay/>
     </>
   );
 };
