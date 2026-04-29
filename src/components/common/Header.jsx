@@ -88,14 +88,15 @@ const navItems = [
  {
     label: "Ayurveda",
     children: [
-      { label: "What is Ayurveda?", link: "/ayurveda" },
-      { label: "Panchakarma", link: "/panchakarma" },
-      { label: "Benefits", link: "/benefits" },
+      { label: "What is Ayurveda?", link: "ayurveda/ayurveda" },
+      { label: "Panchakarma", link: "ayurveda/panchakarma" },
+      { label: "Treatments", link: "ayurveda/treatments" },
+      { label: "Videos & Articles", link: "ayurveda/videoarticle" },
     ],
   },
   {
     label: "Contact",
-    link: "/contact",
+    link: "contact",
     children: [],
   },
 ];
@@ -227,44 +228,65 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+             
               {navItems.map((item) => (
-                <div
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => handleMouseEnter(item.label)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <a
-                    href="#"
-                    className={`px-3 xl:px-4 py-2 text-sm transition-colors duration-150 whitespace-nowrap block ${
-                      activeMenu === item.label
-                        ? "text-[#2e3d2f]"
-                        : "text-[#4a5a4b] hover:text-[#2e3d2f]"
-                    }`}
-                    style={{
-                      fontFamily: "'Cormorant Garamond', 'Georgia', serif",
-                      fontSize: "17.5px",
-                      letterSpacing: "0.02em",
-                    }}
+                  <div
+                    key={item.label}
+                    className="relative"
+                    onMouseEnter={() => handleMouseEnter(item.label)}
+                    onMouseLeave={handleMouseLeave}
                   >
-                    {item.label}
-                  </a>
-                  {item.children.length > 0 && (
-                    <DropdownMenu items={item.children} isOpen={activeMenu === item.label} />
-                  )}
-                </div>
-              ))}
+                    {item.label === "Contact" ? (
+                      // ✅ ONLY CONTACT CLICKABLE
+                      <Link
+                        to="/contact"
+                        className="px-3 xl:px-4 py-2 text-sm text-[#4a5a4b] hover:text-[#2e3d2f] block"
+                        style={{
+                          fontFamily: "'Cormorant Garamond', 'Georgia', serif",
+                          fontSize: "17.5px",
+                          letterSpacing: "0.02em",
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      // ❌ ALL OTHERS NOT CLICKABLE
+                      <span
+                        className="px-3 xl:px-4 py-2 text-sm text-[#4a5a4b] block cursor-default"
+                        style={{
+                          fontFamily: "'Cormorant Garamond', 'Georgia', serif",
+                          fontSize: "17.5px",
+                          letterSpacing: "0.02em",
+                        }}
+                      >
+                        {item.label}
+                      </span>
+                    )}
+
+                    {/* Dropdown still works on hover */}
+                    {item.children.length > 0 && (
+                      <DropdownMenu
+                        items={item.children}
+                        isOpen={activeMenu === item.label}
+                      />
+                    )}
+                  </div>
+                ))}
             </nav>
 
             {/* Book Now + Hamburger */}
             <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="hidden sm:inline-block border border-[#3d4a3e] text-[#3d4a3e] hover:bg-[#3d4a3e] hover:text-[#f5f2eb] transition-colors duration-200 px-5 py-2 text-xs tracking-[0.18em] font-medium"
-                style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif", letterSpacing: "0.18em", fontSize: "13px" }}
-              >
-                BOOK NOW
-              </a>
+             <Link
+              to="/contact"
+              className="hidden sm:inline-block border border-[#3d4a3e] text-[#3d4a3e] hover:bg-[#3d4a3e] hover:text-[#f5f2eb] transition-colors duration-200 px-5 py-2 text-xs tracking-[0.18em] font-medium"
+              style={{
+                fontFamily: "'Cormorant Garamond', 'Georgia', serif",
+                letterSpacing: "0.18em",
+                fontSize: "13px",
+              }}
+            >
+              BOOK NOW
+            </Link>
 
               {/* Hamburger (mobile/tablet) */}
               <button

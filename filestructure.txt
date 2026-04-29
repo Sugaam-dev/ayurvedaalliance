@@ -80,6 +80,48 @@
             |-- OurTeam.jsx
             |-- OurTreatments.jsx
             |-- Stay.jsx
+        |-- ayurveda
+            |-- Ayurveda.jsx
+            |-- AyurvedaFAQ.jsx
+            |-- AyurvedaSection.jsx
+            |-- images
+                |-- ayur1.jpg
+                |-- ayur2.jpg
+                |-- ayur3.jpg
+                |-- ayur4.jpg
+                |-- dose-juice.jpg
+                |-- katherine-hanlon.jpg
+                |-- main-ayurvedic-skincare-tips.jpg
+                |-- relex.jpg
+                |-- treatment.jpg
+                |-- treatment1.jpg
+                |-- treatment10.jpg
+                |-- treatment11.jpg
+                |-- treatment13.jpg
+                |-- treatment14.jpg
+                |-- treatment15.jpg
+                |-- treatment16.jpg
+                |-- treatment2.jpg
+                |-- treatment3.jpg
+                |-- treatment4.jpg
+                |-- treatment5.jpg
+                |-- treatment6.jpg
+                |-- treatment7.jpg
+                |-- treatment8.jpg
+                |-- treatment9.jpg
+            |-- Panchakarma.jsx
+            |-- Treatments.jsx
+            |-- videoarticlespages
+                |-- DetoxInfo.jsx
+                |-- LiverDetoxArticle.jsx
+                |-- VideoArticle.jsx
+            |-- VideosArticles.jsx
+        |-- contact
+            |-- Contact.jsx
+            |-- images
+                |-- contact.jpg
+                |-- contactimage.jpg
+                |-- logo.jpg
         |-- home
             |-- data
                 |-- meditationData.js
