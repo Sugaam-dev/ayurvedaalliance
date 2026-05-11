@@ -10,6 +10,7 @@
 |-- src
     |-- App.jsx
     |-- assets
+        |-- ayurvedabanner.jpg
         |-- forest.jpg
         |-- hero.png
         |-- ourprogram.jpg
@@ -160,6 +161,7 @@
             |-- MediaCarousel.jsx
             |-- MeditationPrograms.jsx
             |-- ProgramSection.jsx
+            |-- RetreatFilterPage.jsx
             |-- RetreatIncludesPage.jsx
             |-- RetreatPage.jsx
             |-- SudarshanKriya.jsx
@@ -168,4 +170,13 @@
             |-- TestimonialsPage.jsx
             |-- WellnessSection.jsx
             |-- WisdomSection.jsx
+        |-- yourwellnessgoals
+            |-- images
+                |-- treatment11.jpg
+                |-- treatment7.jpg
+                |-- treatment8.jpg
+                |-- well.jpg
+                |-- well1.jpg
+                |-- well2.jpg
+            |-- YourWellnessGoals.jsx
 |-- vite.config.js

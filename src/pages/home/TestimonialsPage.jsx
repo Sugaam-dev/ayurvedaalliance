@@ -2,18 +2,21 @@ import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { Autoplay, Pagination } from "swiper/modules";
+
+import {
+  Quote,
+  Leaf,
+  Star,
+} from "lucide-react";
 
 import img1 from "./images/te.jpg";
 import img2 from "./images/teac.jpg";
 import img3 from "./images/teach.jpeg";
 import img4 from "./images/teachers.jpg";
 import img5 from "./images/yogiranjan.jpeg";
-
-
 
 import img6 from "./images/bphdr.jpg";
 import img7 from "./images/dsc.jpg";
@@ -53,139 +56,243 @@ const testimonials = [
   },
 ];
 
+const programs = [
+  {
+    img: img6,
+    title: "Luxury Retreat",
+  },
+  {
+    img: img7,
+    title: "Personalised Wellness",
+  },
+  {
+    img: img8,
+    title: "Ayurvedic Treatments",
+  },
+  {
+    img: img9,
+    title: "Nourishing Meals",
+  },
+];
+
 const TestimonialsPage = () => {
   return (
     <>
-    <section className="w-full bg-[#e9e6df] py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+      {/* ================================================= */}
+      {/* TESTIMONIAL SECTION */}
+      {/* ================================================= */}
 
-        {/* Heading */}
-        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-serif text-gray-800 mb-12">
-          What our guests are saying
-        </h2>
+      <section className="relative w-full overflow-hidden bg-[#ece7de] py-16 sm:py-20 md:py-24 lg:py-28 2xl:py-36">
 
-        {/* Swiper */}
-        <Swiper
-          modules={[Autoplay, Pagination]}
-          spaceBetween={30}
-          loop={true}
-          autoplay={{ delay: 3000 }}
-          pagination={{ clickable: true }}
-          breakpoints={{
-            0: { slidesPerView: 1 },
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-        >
-          {testimonials.map((item, index) => (
-            <SwiperSlide key={index}>
-              <div className="bg-[#8f9085] text-white p-8 md:p-10 flex flex-col justify-between min-h-[320px] transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+        {/* Background Blur */}
+        <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-[#6d8b74]/10 blur-3xl rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#8b5e3c]/10 blur-3xl rounded-full"></div>
 
-                {/* Quote */}
-                <p className="text-lg md:text-xl leading-relaxed font-serif">
-                  "{item.text}"
-                </p>
+        <div className="relative max-w-[2000px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28">
 
-                {/* User */}
-                <div className="flex items-center gap-4 mt-8">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-white"
-                  />
-                  <div className="text-sm">
-                    <p className="font-medium">{item.name}</p>
-                    <p className="text-gray-200 text-xs">{item.role}</p>
+          {/* Heading */}
+          <div className="text-center max-w-4xl mx-auto mb-14 xl:mb-20">
+
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#6d8b74]/10 border border-[#6d8b74]/20 mb-6">
+              
+              <Leaf className="text-[#6d8b74]" size={16} />
+
+              <p className="text-[11px] sm:text-xs tracking-[0.25em] uppercase text-[#6d8b74] font-medium">
+                Guest Experiences
+              </p>
+            </div>
+
+            <h2 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4.8rem] 2xl:text-[5.8rem] leading-[1.05] font-serif text-[#3d2b1f]">
+              What Our Guests
+              <span className="block italic text-[#6d8b74]">
+                Are Saying
+              </span>
+            </h2>
+
+            <div className="w-24 h-[2px] bg-gradient-to-r from-[#6d8b74] to-[#8b5e3c] mx-auto mt-6 mb-8"></div>
+
+            <p className="text-[#5f5a54] text-sm sm:text-base md:text-lg xl:text-[19px] leading-relaxed max-w-3xl mx-auto">
+              Discover how our wellness retreats have transformed lives through
+              luxury healing, Ayurveda, yoga, and holistic rejuvenation.
+            </p>
+          </div>
+
+          {/* Swiper */}
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={28}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1200: {
+                slidesPerView: 3,
+              },
+            }}
+            className="testimonial-swiper"
+          >
+            {testimonials.map((item, index) => (
+              <SwiperSlide key={index}>
+
+                <div className="group relative h-full rounded-[30px] overflow-hidden border border-white/20 bg-white/50 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.16)] transition-all duration-700 hover:-translate-y-3">
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#6d8b74]/5 to-[#8b5e3c]/10 opacity-0 group-hover:opacity-100 transition duration-700"></div>
+
+                  <div className="relative p-7 sm:p-8 xl:p-10 min-h-[360px] flex flex-col justify-between">
+
+                    {/* Quote Icon */}
+                    <div className="flex justify-between items-start mb-6">
+
+                      <div className="w-14 h-14 rounded-full bg-[#6d8b74]/10 flex items-center justify-center">
+                        <Quote className="text-[#6d8b74]" size={24} />
+                      </div>
+
+                      <div className="flex items-center gap-1">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star
+                            key={star}
+                            size={14}
+                            className="fill-[#b08968] text-[#b08968]"
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Text */}
+                    <p className="text-[#3d2b1f] text-lg sm:text-xl xl:text-[22px] leading-relaxed font-serif">
+                      “{item.text}”
+                    </p>
+
+                    {/* User */}
+                    <div className="flex items-center gap-4 mt-10">
+
+                      <div className="relative">
+                        <img
+                          src={item.img}
+                          alt={item.name}
+                          className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-lg"
+                        />
+
+                        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#6d8b74] border-2 border-white"></div>
+                      </div>
+
+                      <div>
+                        <p className="text-[#3d2b1f] font-semibold text-base">
+                          {item.name}
+                        </p>
+
+                        <p className="text-[#6d6a65] text-sm">
+                          {item.role}
+                        </p>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
 
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
+
+      {/* ================================================= */}
+      {/* PROGRAM OVERVIEW */}
+      {/* ================================================= */}
+
+      <section className="relative w-full overflow-hidden bg-[#f4f0e8] py-16 sm:py-20 md:py-24 lg:py-28 2xl:py-36">
+
+        {/* Background */}
+        <div className="absolute top-0 right-0 w-[350px] h-[350px] bg-[#8b5e3c]/10 blur-3xl rounded-full"></div>
+
+        <div className="relative max-w-[2000px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28">
+
+          {/* Header */}
+          <div className="max-w-4xl mx-auto text-center mb-14 xl:mb-20">
+
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8b5e3c]/10 border border-[#8b5e3c]/20 mb-6">
+              
+              <Leaf className="text-[#8b5e3c]" size={16} />
+
+              <p className="text-[11px] sm:text-xs tracking-[0.25em] uppercase text-[#8b5e3c] font-medium">
+                Wellness Programs
+              </p>
+            </div>
+
+            <h2 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4.8rem] 2xl:text-[5.8rem] leading-[1.05] font-serif text-[#3d2b1f]">
+              Program
+              <span className="block italic text-[#6d8b74]">
+                Overview
+              </span>
+            </h2>
+
+            <div className="w-24 h-[2px] bg-gradient-to-r from-[#8b5e3c] to-[#6d8b74] mx-auto mt-6 mb-8"></div>
+
+            <p className="text-[#5f5a54] text-sm sm:text-base md:text-lg xl:text-[19px] leading-relaxed">
+              Discover transformative wellness journeys crafted through
+              Ayurveda, yoga, healing therapies, mindful living, and nourishing
+              experiences tailored for your complete rejuvenation.
+            </p>
+          </div>
+
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-8">
+
+            {programs.map((item, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-[28px] bg-white/50 backdrop-blur-md border border-white/20 shadow-[0_15px_50px_rgba(0,0,0,0.08)] hover:-translate-y-3 hover:shadow-[0_25px_70px_rgba(0,0,0,0.16)] transition-all duration-700"
+              >
+
+                {/* Image */}
+                <div className="relative overflow-hidden">
+
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-[320px] sm:h-[360px] md:h-[420px] xl:h-[480px] 2xl:h-[580px] object-cover transition-all duration-700 group-hover:scale-110"
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+
+                  {/* Floating Tag */}
+                  <div className="absolute top-5 left-5 px-4 py-2 rounded-full bg-white/85 backdrop-blur-md text-[#3d2b1f] text-[11px] tracking-[0.2em] uppercase shadow-lg">
+                    Wellness
+                  </div>
+
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 w-full p-6">
+
+                    <h3 className="text-white text-2xl xl:text-3xl font-serif leading-tight">
+                      {item.title}
+                    </h3>
+
+                    <div className="w-16 h-[2px] bg-[#6d8b74] mt-4 group-hover:w-24 transition-all duration-500"></div>
+                  </div>
+
+                </div>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+            ))}
 
-      </div>
-    </section>
-
-    <section className="w-full bg-[#e9e6df] py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          
-          {/* Small Label */}
-          <p className="text-xs tracking-[0.2em] uppercase text-gray-500 mb-4">
-            All-Inclusive Wellness Retreat
-          </p>
-
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 leading-tight">
-            Program Overview
-          </h2>
-
-          {/* Description */}
-          <p className="mt-6 text-gray-600 text-sm md:text-base leading-relaxed">
-            At Sukhavati, we offer a range of transformative solutions tailored to your unique health goals. 
-            Whether you are seeking rejuvenation, detoxification, or a wellness reset, our programs combine 
-            ancient Ayurvedic treatments, yoga, cooking classes, and nutritious meals to support your journey.
-          </p>
+          </div>
         </div>
-
-        {/* Image Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-          {/* Card 1 */}
-          <div>
-            <img
-              src={img6}
-              alt="Luxury Retreat"
-              className="w-full h-[350px] md:h-[420px] object-cover"
-            />
-            <p className="mt-3 text-xs tracking-[0.15em] uppercase text-gray-500">
-              Luxury Retreat
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div>
-            <img
-              src={img7}
-              alt="Personalised Wellness"
-              className="w-full h-[350px] md:h-[420px] object-cover"
-            />
-            <p className="mt-3 text-xs tracking-[0.15em] uppercase text-gray-500">
-              Personalised Wellness
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div>
-            <img
-              src={img8}
-              alt="Ayurvedic Treatments"
-              className="w-full h-[350px] md:h-[420px] object-cover"
-            />
-            <p className="mt-3 text-xs tracking-[0.15em] uppercase text-gray-500">
-              Ayurvedic Treatments
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div>
-            <img
-              src={img9}
-              alt="Nourishing Meals"
-              className="w-full h-[350px] md:h-[420px] object-cover"
-            />
-            <p className="mt-3 text-xs tracking-[0.15em] uppercase text-gray-500">
-              Nourishing Meals
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };

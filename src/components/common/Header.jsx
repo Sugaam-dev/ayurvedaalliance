@@ -80,7 +80,7 @@ const navItems = [
   {
     label: "Your Wellness Goals",
     children: [
-      { label: "Detox", link: "/detox" },
+      { label: "Detox", link: "yourwellnessgoals/yourwellnessgoals" },
       { label: "Stress Relief", link: "/stress" },
       { label: "Weight Loss", link: "/weight-loss" },
     ],

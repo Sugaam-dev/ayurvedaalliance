@@ -18,6 +18,7 @@ import TestimonialsPage from "./TestimonialsPage";
 import RetreatPage from "./RetreatPage";
 import RetreatIncludesPage from "./RetreatIncludesPage";
 import LifeChangePage from "./LifeChangePage";
+import RetreatFilterPage from "./RetreatFilterPage";
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
       <RetreatPage/>
       <RetreatIncludesPage/>
       <LifeChangePage/>
+      <RetreatFilterPage/>
         {/* <ProgramSection data={meditationData} />
         <MediaCarousel />
       <ProgramSection data={yogaData} />    
