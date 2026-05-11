@@ -27,34 +27,34 @@ function App() {
     <Routes>
       <Route path="/" element={<MainLayout/>}>
         <Route index element={<Home/>} /> 
-        <Route path='about' element={<About/>} />
+        {/* <Route path='about' element={<About/>} />
         <Route path="about/ourstory" element={<OurStory />} />
         <Route path="about/ourprogram" element={<OurProgram />} />
         <Route path="about/ourteam" element={<OurTeam />} />
         <Route path="about/otherservices" element={<OtherServices />} />
         <Route path="about/ourtreatments" element={<OurTreatments />} />
-        <Route path="about/stay" element={<Stay />} />
+        <Route path="about/stay" element={<Stay />} /> */}
 
 
           {/* YourWellnessGoals */}
-           <Route path="yourwellnessgoals/yourwellnessgoals" element={<YourWellnessGoals />} />
+           {/* <Route path="yourwellnessgoals/yourwellnessgoals" element={<YourWellnessGoals />} /> */}
 
 
           {/* Ayurveda */}
 
-           <Route path='ayurveda' element={<Ayurveda/>} />
+           {/* <Route path='ayurveda' element={<Ayurveda/>} />
            <Route path="ayurveda/ayurveda" element={<AyurvedaSection />} />
            <Route path="ayurveda/panchakarma" element={<Panchakarma />}/>
            <Route path="ayurveda/treatments" element={<Treatments />}/>
            <Route path="ayurveda/videoarticle" element={<VideosArticles />}/>
            <Route path="ayurveda/video" element={<VideoArticle />}/>
            <Route path="ayurveda/liver" element={<LiverDetoxArticle />}/>
-           <Route path="ayurveda/detox" element={<DetoxInfo />}/>
+           <Route path="ayurveda/detox" element={<DetoxInfo />}/> */}
     
 
            {/* Contact */}
 
-           <Route path="contact" element={<Contact />}/>
+           {/* <Route path="contact" element={<Contact />}/> */}
 
 
          {/* <Route path="*" element={<div>Page Not Found</div>} />  */}
