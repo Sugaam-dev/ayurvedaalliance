@@ -319,12 +319,12 @@ const RetreatIncludesPage = () => {
             {/* REVIEWS */}
             {/* ================================================= */}
 
-            <div className="mt-14">
+            {/* <div className="mt-14"> */}
 
               {/* Review Header */}
-              <div className="text-center mb-10">
+              {/* <div className="text-center mb-10"> */}
 
-                <h3 className="text-[2rem] sm:text-[2.5rem] xl:text-[3rem] font-serif text-[#3d2b1f]">
+                {/* <h3 className="text-[2rem] sm:text-[2.5rem] xl:text-[3rem] font-serif text-[#3d2b1f]">
                   Guest
                   <span className="italic text-[#d98942]">
                     {" "}Reviews
@@ -332,19 +332,19 @@ const RetreatIncludesPage = () => {
                 </h3>
 
                 <div className="w-20 h-[2px] bg-gradient-to-r from-[#6d8b74] to-[#d98942] mx-auto mt-5"></div>
-              </div>
+              </div> */}
 
               {/* Review Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
                 {visibleReviews.map((review, index) => (
                   <div
                     key={index}
                     className="group rounded-[28px] bg-white/60 backdrop-blur-xl border border-white/20 p-6 shadow-[0_15px_50px_rgba(0,0,0,0.06)] hover:-translate-y-3 hover:shadow-[0_25px_70px_rgba(0,0,0,0.14)] transition-all duration-700"
-                  >
+                  > */}
 
                     {/* Stars */}
-                    <div className="flex items-center gap-1 mb-5">
+                    {/* <div className="flex items-center gap-1 mb-5">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star
                           key={star}
@@ -352,15 +352,15 @@ const RetreatIncludesPage = () => {
                           className="fill-[#d98942] text-[#d98942]"
                         />
                       ))}
-                    </div>
+                    </div> */}
 
                     {/* Text */}
-                    <p className="text-[#4e4a45] leading-[1.9] text-sm sm:text-base">
+                    {/* <p className="text-[#4e4a45] leading-[1.9] text-sm sm:text-base">
                       “{review.text}”
-                    </p>
+                    </p> */}
 
                     {/* User */}
-                    <div className="mt-6 pt-5 border-t border-[#e8ddd0]">
+                    {/* <div className="mt-6 pt-5 border-t border-[#e8ddd0]">
                       
                       <p className="text-[#3d2b1f] font-semibold">
                         {review.name}
@@ -373,10 +373,10 @@ const RetreatIncludesPage = () => {
                   </div>
                 ))}
 
-              </div>
+              </div> */}
 
               {/* Read More */}
-              <div className="flex justify-center mt-10">
+              {/* <div className="flex justify-center mt-10">
 
                 <button
                   onClick={() =>
@@ -397,8 +397,8 @@ const RetreatIncludesPage = () => {
                   )}
                 </button>
 
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
 
           </div>
         </div>
