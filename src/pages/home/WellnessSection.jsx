@@ -76,7 +76,7 @@ const WellnessSection = () => {
               </div>
 
               {/* HEADING */}
-              <h2 className="text-[2rem] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.2rem] 2xl:text-[5rem] leading-[1.08] font-serif text-[#3d2b1f]">
+              <h2 className="text-[2rem] sm:text-[2.6rem] md:text-[3rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem] leading-[1.08] font-serif text-[#3d2b1f]">
                 Your Health
                 <span className="block text-[#6d8b74] italic">
                   Transformation
@@ -146,7 +146,7 @@ const WellnessSection = () => {
               </div>
 
               {/* HEADING */}
-              <h2 className="text-[2rem] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.2rem] 2xl:text-[5rem] leading-[1.08] font-serif text-[#3d2b1f]">
+              <h2 className="text-[2rem] sm:text-[2.6rem] md:text-[3rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem] leading-[1.08] font-serif text-[#3d2b1f]">
                 Our Ayurvedic
                 <span className="block text-[#6d8b74] italic">
                   Approach
