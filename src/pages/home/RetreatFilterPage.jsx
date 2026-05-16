@@ -211,7 +211,7 @@ const RetreatFilterPage = () => {
           {/* Heading */}
           <div className="text-center max-w-5xl mx-auto">
 
-            <h2 className="font-serif text-[#1f2a44] leading-none text-[2.6rem] sm:text-[3.4rem] md:text-[4.5rem] lg:text-[5rem] xl:text-[5.5rem] 2xl:text-[6.5rem]">
+            <h2 className="font-serif text-[#1f2a44] leading-none text-[2rem] sm:text-[2.2rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem]">
               Upcoming Retreats
             </h2>
 
@@ -465,7 +465,7 @@ const RetreatFilterPage = () => {
             {/* Heading */}
             <div className="text-center max-w-3xl mx-auto">
 
-              <h3 className="font-serif text-[#1f2a44] text-[2.4rem] sm:text-[3rem] md:text-[4rem]">
+              <h3 className="font-serif text-[#1f2a44] text-[2.4rem] sm:text-[2.2rem] md:text-[4rem]">
                 Guest Reviews
               </h3>
 

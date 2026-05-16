@@ -62,11 +62,11 @@ const LifeChangePage = () => {
             {/* Heading */}
             <h1 className="font-serif leading-[0.95] tracking-tight text-white">
 
-              <span className="block text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem] 2xl:text-[8rem]">
+              <span className="block text-[2rem] sm:text-[2.2rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem]">
                 Ready To
               </span>
 
-              <span className="block italic text-[#d7c0a6] text-[2.8rem] sm:text-[3.8rem] md:text-[4.8rem] lg:text-[5.8rem] xl:text-[6.8rem] 2xl:text-[8rem] mt-2">
+              <span className="block italic text-[#d7c0a6] text-[2rem] sm:text-[2.2rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem] mt-2">
                 Change Your Life?
               </span>
             </h1>
