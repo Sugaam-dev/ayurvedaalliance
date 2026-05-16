@@ -129,15 +129,15 @@ const HeroSection = () => {
 
             <h1 className="font-serif text-white leading-[0.95] tracking-tight max-w-5xl">
 
-              <span className="block text-[2.4rem] leading-[0.95] sm:text-[3.2rem] md:text-[4.2rem] lg:text-[5rem] xl:text-[6rem] 2xl:text-[7rem]">
+              <span className="block text-[2.4rem] leading-[0.95] sm:text-[3.2rem] md:text-[4.2rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem]">
                 Restore Your Mind,
               </span>
 
-              <span className="block text-[2.4rem] leading-[0.95] sm:text-[3.2rem] md:text-[4.2rem] lg:text-[5rem] xl:text-[6rem] 2xl:text-[7rem]">
+              <span className="block text-[2.4rem] leading-[0.95] sm:text-[3.2rem] md:text-[4.2rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem]">
                 Body & Spirit Through
               </span>
 
-              <span className="block italic text-[#f2b24f] text-[2.2rem] leading-[0.95] sm:text-[3rem] md:text-[4rem] lg:text-[4.8rem] xl:text-[5.5rem] 2xl:text-[6.3rem] mt-2">
+              <span className="block italic text-[#f2b24f] text-[2.2rem] leading-[0.95] sm:text-[3rem] md:text-[4rem] lg:text-[4rem] xl:text-[5rem] 2xl:text-[4rem] mt-2">
                 Ayurveda & Yoga
               </span>
             </h1>
