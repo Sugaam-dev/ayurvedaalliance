@@ -58,13 +58,13 @@ const RetreatPage = () => {
             {/* Heading */}
             <h1 className="text-white font-serif leading-[0.95] tracking-tight">
 
-              <span className="block text-[3rem] leading-[0.9] sm:text-[3.8rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem] 2xl:text-[8.5rem]">
+              <span className="block text-[3rem] leading-[0.9] sm:text-[3.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem]">
                 A Life-
                 <br className="sm:hidden" />
                 Changing
               </span>
 
-              <span className="block italic text-[#d7c0a6] text-[2.6rem] leading-[0.95] sm:text-[3.3rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] 2xl:text-[8rem] mt-2">
+              <span className="block italic text-[#d7c0a6] text-[2.6rem] leading-[0.95] sm:text-[3.3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem] mt-2">
                 Retreat For The Soul
               </span>
             </h1>

@@ -186,7 +186,7 @@ const RetreatIncludesPage = () => {
           </div>
 
           {/* Heading */}
-          <h2 className="text-[2.3rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.8rem] xl:text-[5.8rem] 2xl:text-[7rem] leading-[1.02] font-serif text-[#3d2b1f]">
+          <h2 className="text-[2.3rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem] leading-[1.02] font-serif text-[#3d2b1f]">
             Your Panchakarma
             <span className="block italic text-[#d98942]">
               Retreat Experience

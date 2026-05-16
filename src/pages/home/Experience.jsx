@@ -44,7 +44,7 @@ const Experience = () => {
             </div>
 
             {/* Heading */}
-            <h2 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.4rem] lg:text-[4rem] xl:text-[4.5rem] 2xl:text-[5.5rem] leading-[1.05] font-serif text-[#3d2b1f]">
+            <h2 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.4rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem] leading-[1.05] font-serif text-[#3d2b1f]">
               Award Winning
               <span className="block italic text-[#6d8b74]">
                 Experience

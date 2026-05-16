@@ -102,7 +102,7 @@ const TestimonialsPage = () => {
               </p>
             </div>
 
-            <h2 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4.8rem] 2xl:text-[5.8rem] leading-[1.05] font-serif text-[#3d2b1f]">
+            <h2 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem] leading-[1.05] font-serif text-[#3d2b1f]">
               What Our Guests
               <span className="block italic text-[#6d8b74]">
                 Are Saying
@@ -234,7 +234,7 @@ const TestimonialsPage = () => {
               </p>
             </div>
 
-            <h2 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4.8rem] 2xl:text-[5.8rem] leading-[1.05] font-serif text-[#3d2b1f]">
+            <h2 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4rem] 2xl:text-[4rem] leading-[1.05] font-serif text-[#3d2b1f]">
               Program
               <span className="block italic text-[#6d8b74]">
                 Overview
